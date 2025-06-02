@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grade Viewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 30px;
+      border: 2px solid #ccc;
+      border-radius: 15px;
+      background-color: #f1f8e9;
+      text-align: center;
+    }
+    input {
+      padding: 12px;
+      width: 80%;
+      font-size: 16px;
+      margin-top: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔐 Protected Grade Viewer</h2>
+  <input type="password" id="passwordInput" placeholder="Enter password..." />
+  <br />
+  <button onclick="fetchGrade()">View My Grade</button>
+
+  <div class="result" id="gradeResult"></div>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyGeDdiZb0Y89BOSVsIELNGMTrGVRjUVXeq_YUcgSzX1ZqRaUVayjsqUPj4URsnM5I/exec";
+
+    function fetchGrade() {
+      const password = document.getElementById("passwordInput").value;
+      const url = `${scriptURL}?password=${encodeURIComponent(password)}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const resultDiv = document.getElementById("gradeResult");
+
+          if (data.error) {
+            resultDiv.innerHTML = `<span style="color:red;">❌ ${data.error}</span>`;
+          } else {
+            resultDiv.innerHTML = `
+              <div style="background:#fffde7;padding:20px;border-radius:10px;border:1px solid #ccc;">
+                <strong>✅ Final Grade:</strong> ${data.finalGrade}%<br>
+                <strong>🎯 Earned Points:</strong> ${data.earnedPoints}<br>
+                <strong>📊 Total Points:</strong> ${data.totalPoints}
+              </div>
+            `;
+          }
+        })
+        .catch(error => {
+          document.getElementById("gradeResult").innerHTML = "⚠️ Error fetching grade.";
+          console.error("Fetch error:", error);
+        });
+    }
+  </script>
+</body>
+</html>
