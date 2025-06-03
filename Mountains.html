@@ -1,712 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Build-Your-Hike Tool - Busan Mountain Trails</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Build Your Perfect Busan Hike – PRD</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f7f9fb;
+      color: #333;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
+    header {
+      background: linear-gradient(to right, #0077cc, #00c6ff);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
+    header h1 {
+      margin-bottom: 10px;
+      font-size: 2.8em;
+    }
 
-        .header {
-            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
+    .button-link {
+      display: inline-block;
+      margin: 10px 8px;
+      padding: 10px 20px;
+      background-color: white;
+      color: #0077cc;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
 
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
+    .button-link:hover {
+      background-color: #e0f3ff;
+    }
 
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
 
-        .form-container {
-            padding: 40px;
-        }
+    section {
+      margin-bottom: 40px;
+    }
 
-        .question-group {
-            margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards;
-        }
+    h2 {
+      color: #0077cc;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 5px;
+    }
 
-        .question-group:nth-child(1) { animation-delay: 0.1s; }
-        .question-group:nth-child(2) { animation-delay: 0.2s; }
-        .question-group:nth-child(3) { animation-delay: 0.3s; }
-        .question-group:nth-child(4) { animation-delay: 0.4s; }
-        .question-group:nth-child(5) { animation-delay: 0.5s; }
+    ul {
+      padding-left: 20px;
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #e3f2fd;
+      font-size: 0.9em;
+    }
 
-        .question-label {
-            display: block;
-            font-size: 1.3em;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .option {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .option-label {
-            display: block;
-            padding: 15px 20px;
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            text-align: center;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .option-label:hover {
-            background: #e3f2fd;
-            border-color: #2196f3;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.2);
-        }
-
-        .option input[type="radio"]:checked + .option-label {
-            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-            color: white;
-            border-color: transparent;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .submit-btn {
-            display: block;
-            width: 100%;
-            max-width: 300px;
-            margin: 40px auto 0;
-            padding: 15px 30px;
-            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-
-        .submit-btn:active {
-            transform: translateY(-1px);
-        }
-
-        .result-container {
-            display: none;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .result-card {
-            background: white;
-            color: #333;
-            border-radius: 20px;
-            padding: 30px;
-            margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .trail-name {
-            font-size: 2em;
-            font-weight: 700;
-            color: #FF6B6B;
-            margin-bottom: 15px;
-        }
-
-        .trail-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .info-item {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 12px;
-            border-left: 4px solid #4ECDC4;
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: #666;
-            font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .info-value {
-            font-size: 1.2em;
-            font-weight: 500;
-            color: #333;
-            margin-top: 5px;
-        }
-
-        .highlights {
-            background: #e8f5e9;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-            border-left: 4px solid #4caf50;
-        }
-
-        .directions {
-            background: #fff3e0;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-            border-left: 4px solid #ff9800;
-        }
-
-        .try-again-btn {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-        }
-
-        .try-again-btn:hover {
-            background: white;
-            color: #764ba2;
-        }
-
-        .mountain-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2em;
-            }
-
-            .form-container {
-                padding: 25px;
-            }
-
-            .options {
-                grid-template-columns: 1fr;
-            }
-
-            .trail-info {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="mountain-icon">🏔️</div>
-            <h1>Build-Your-Hike Tool</h1>
-            <p>Find the perfect Busan mountain trail just for you!</p>
-        </div>
 
-        <div class="form-container" id="quizForm">
-            <div class="question-group">
-                <label class="question-label">How long do you want to hike?</label>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" name="duration" value="short" id="duration-short">
-                        <label for="duration-short" class="option-label">
-                            🕐 Under 1 hour<br>
-                            <small>Quick adventure</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="duration" value="medium" id="duration-medium">
-                        <label for="duration-medium" class="option-label">
-                            🕑 1-2 hours<br>
-                            <small>Half-day hike</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="duration" value="long" id="duration-long">
-                        <label for="duration-long" class="option-label">
-                            🕐 3+ hours<br>
-                            <small>Full adventure</small>
-                        </label>
-                    </div>
-                </div>
-            </div>
+<header>
+  <h1>Build Your Perfect Busan Hike</h1>
+  <p>Product Requirements Document (PRD)</p>
+  <a class="button-link" href="https://samandar4411.github.io/Samandar/Mountains.html" target="_blank">View Live Project</a>
+  <a class="button-link" href="https://docs.google.com/document/d/12gbBAXi6rNdiAjdtKlMgylW-oYAbg9Ycp682VF8jJuc/edit?usp=drivesdk" target="_blank">Documentary</a>
+  <p>By Samandar | Version 1.0 | May 22, 2025</p>
+</header>
 
-            <div class="question-group">
-                <label class="question-label">What difficulty level do you prefer?</label>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" name="difficulty" value="easy" id="difficulty-easy">
-                        <label for="difficulty-easy" class="option-label">
-                            🟢 Easy<br>
-                            <small>Gentle trails</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="difficulty" value="moderate" id="difficulty-moderate">
-                        <label for="difficulty-moderate" class="option-label">
-                            🟡 Moderate<br>
-                            <small>Some challenge</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="difficulty" value="challenging" id="difficulty-challenging">
-                        <label for="difficulty-challenging" class="option-label">
-                            🔴 Challenging<br>
-                            <small>For experienced hikers</small>
-                        </label>
-                    </div>
-                </div>
-            </div>
+<div class="container">
 
-            <div class="question-group">
-                <label class="question-label">What do you want to see?</label>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" name="scenery" value="temples" id="scenery-temples">
-                        <label for="scenery-temples" class="option-label">
-                            🏯 Temples<br>
-                            <small>Cultural heritage</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="scenery" value="cityview" id="scenery-cityview">
-                        <label for="scenery-cityview" class="option-label">
-                            🏙️ City view<br>
-                            <small>Urban panoramas</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="scenery" value="forest" id="scenery-forest">
-                        <label for="scenery-forest" class="option-label">
-                            🌲 Forest<br>
-                            <small>Nature immersion</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="scenery" value="ocean" id="scenery-ocean">
-                        <label for="scenery-ocean" class="option-label">
-                            🌊 Ocean<br>
-                            <small>Coastal views</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="scenery" value="fortress" id="scenery-fortress">
-                        <label for="scenery-fortress" class="option-label">
-                            🏰 Fortress ruins<br>
-                            <small>Historical sites</small>
-                        </label>
-                    </div>
-                </div>
-            </div>
+  <section>
+    <h2>Overview</h2>
+    <p>
+      Build Your Perfect Busan Hike is an interactive tool that helps users discover the best hiking trails in Busan based on their preferences. The platform offers tailored trail recommendations considering factors like duration, difficulty, scenery, season, and transport access. With stunning design and smooth UX, it's a go-to resource for both beginners and serious hikers.
+    </p>
+  </section>
 
-            <div class="question-group">
-                <label class="question-label">When are you going?</label>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" name="season" value="spring" id="season-spring">
-                        <label for="season-spring" class="option-label">
-                            🌸 Spring<br>
-                            <small>Cherry blossoms</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="season" value="summer" id="season-summer">
-                        <label for="season-summer" class="option-label">
-                            ☀️ Summer<br>
-                            <small>Lush greenery</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="season" value="fall" id="season-fall">
-                        <label for="season-fall" class="option-label">
-                            🍂 Fall<br>
-                            <small>Autumn colors</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="season" value="winter" id="season-winter">
-                        <label for="season-winter" class="option-label">
-                            ❄️ Winter<br>
-                            <small>Snow-capped peaks</small>
-                        </label>
-                    </div>
-                </div>
-            </div>
+  <section>
+    <h2>Problem Statement</h2>
+    <p>
+      There are many great hiking trails in Busan, but new hikers or tourists often struggle to choose the right trail for their needs. They may not know which mountains are scenic in each season, which are beginner-friendly, or how to reach them via public transport. Existing resources are often too general or lack interactivity.
+    </p>
+  </section>
 
-            <div class="question-group">
-                <label class="question-label">Public transportation required?</label>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" name="transport" value="yes" id="transport-yes">
-                        <label for="transport-yes" class="option-label">
-                            🚇 Yes<br>
-                            <small>Subway accessible</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="transport" value="no" id="transport-no">
-                        <label for="transport-no" class="option-label">
-                            🚗 No<br>
-                            <small>I have a car</small>
-                        </label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="transport" value="either" id="transport-either">
-                        <label for="transport-either" class="option-label">
-                            🤷 Either<br>
-                            <small>Doesn't matter</small>
-                        </label>
-                    </div>
-                </div>
-            </div>
+  <section>
+    <h2>Target Users</h2>
+    <ul>
+      <li>Travelers visiting Busan interested in nature and hiking</li>
+      <li>Locals seeking new trail experiences</li>
+      <li>Beginners looking for easier hikes with helpful guidance</li>
+    </ul>
+  </section>
 
-            <button type="button" class="submit-btn" onclick="getRecommendation()">
-                Find My Perfect Trail 🥾
-            </button>
-        </div>
+  <section>
+    <h2>Core Features</h2>
+    <ul>
+      <li>Interactive questionnaire that matches users to hiking trails</li>
+      <li>Top 3 recommendations with match percentage</li>
+      <li>Detailed mountain info: height, difficulty, duration, scenery, transport, best season, and unique highlights</li>
+      <li>Mobile-responsive UI with animations and smooth transitions</li>
+    </ul>
+  </section>
 
-        <div class="result-container" id="resultContainer">
-            <div class="mountain-icon">⛰️</div>
-            <h2>Your Perfect Trail Awaits!</h2>
-            <div class="result-card" id="resultCard">
-                <!-- Results will be inserted here -->
-            </div>
-            <button class="try-again-btn" onclick="resetQuiz()">Try Again</button>
-        </div>
-    </div>
+  <section>
+    <h2>Stretch Goals / Extensions</h2>
+    <ul>
+      <li>Add a “favorites” or “bookmark” feature for saving trails</li>
+      <li>Allow users to submit photos or reviews of trails</li>
+      <li>Implement a multilingual version (e.g., Korean, Japanese, Chinese)</li>
+      <li>Include real-time weather updates for each trail</li>
+      <li>Offer GPX file downloads for trail navigation</li>
+    </ul>
+  </section>
 
-    <script>
-        const trails = [
-            {
-                name: "Geumjeongsan Fortress Trail",
-                duration: ["medium", "long"],
-                difficulty: ["moderate"],
-                scenery: ["fortress", "cityview"],
-                season: ["spring", "fall"],
-                transport: ["yes", "either"],
-                time: "2.5 hours",
-                highlights: "Ancient fortress walls, panoramic city views, Beomeosa Temple, historical significance",
-                directions: "Subway Line 1 → Beomeosa Station → Exit 5 → 10-minute walk to trailhead",
-                description: "Explore Korea's largest mountain fortress with stunning views of Busan city.",
-                difficulty_text: "Moderate"
-            },
-            {
-                name: "Jangsan Forest Trail",
-                duration: ["medium"],
-                difficulty: ["easy", "moderate"],
-                scenery: ["forest", "ocean"],
-                season: ["spring", "summer", "fall"],
-                transport: ["yes", "either"],
-                time: "1.5 hours",
-                highlights: "Dense forest, coastal views, peaceful atmosphere, diverse wildlife",
-                directions: "Subway Line 2 → Jangsan Station → Exit 1 → Bus 1003 to trailhead",
-                description: "A serene forest hike with glimpses of the ocean through the trees.",
-                difficulty_text: "Easy to Moderate"
-            },
-            {
-                name: "Hwangryeongsan Temple Circuit",
-                duration: ["short", "medium"],
-                difficulty: ["easy"],
-                scenery: ["temples", "forest"],
-                season: ["spring", "summer", "fall", "winter"],
-                transport: ["yes", "either"],
-                time: "1 hour",
-                highlights: "Peaceful temples, meditation spots, cherry blossoms in spring",
-                directions: "Subway Line 3 → Namsan Station → Exit 2 → 5-minute walk",
-                description: "A gentle walk connecting beautiful Buddhist temples on a low mountain.",
-                difficulty_text: "Easy"
-            },
-            {
-                name: "Igidae Coastal Trail",
-                duration: ["medium"],
-                difficulty: ["easy", "moderate"],
-                scenery: ["ocean", "forest"],
-                season: ["spring", "summer", "fall"],
-                transport: ["yes", "either"],
-                time: "2 hours",
-                highlights: "Dramatic cliffs, ocean waves, lighthouse, coastal forest",
-                directions: "Subway Line 2 → Gyeongseong Univ. Station → Bus 24 to Igidae",
-                description: "Walk along dramatic coastal cliffs with breathtaking ocean views.",
-                difficulty_text: "Easy to Moderate"
-            },
-            {
-                name: "Geumgang Park Cherry Trail",
-                duration: ["short"],
-                difficulty: ["easy"],
-                scenery: ["cityview", "forest"],
-                season: ["spring"],
-                transport: ["yes", "either"],
-                time: "45 minutes",
-                highlights: "Cherry blossoms, city views, cable car option, family-friendly",
-                directions: "Subway Line 1 → Dongnae Station → Bus 203 to Geumgang Park",
-                description: "Perfect spring hike through thousands of cherry trees with city panoramas.",
-                difficulty_text: "Easy"
-            },
-            {
-                name: "Molundae Rocky Shore Trail",
-                duration: ["short", "medium"],
-                difficulty: ["moderate"],
-                scenery: ["ocean"],
-                season: ["fall", "winter", "spring"],
-                transport: ["no", "either"],
-                time: "1.5 hours",
-                highlights: "Unique rock formations, crashing waves, photography spots",
-                directions: "Bus 27 to Molundae → 10-minute walk to rocky shore",
-                description: "Explore unique geological formations along Busan's rugged coastline.",
-                difficulty_text: "Moderate"
-            },
-            {
-                name: "Taejongdae Lighthouse Trail",
-                duration: ["medium"],
-                difficulty: ["easy", "moderate"],
-                scenery: ["ocean", "forest"],
-                season: ["spring", "summer", "fall", "winter"],
-                transport: ["yes", "either"],
-                time: "2 hours",
-                highlights: "Historic lighthouse, cliff views, observatory, sea breeze",
-                directions: "Subway Line 1 → Jagalchi Station → Bus 8, 30, 88 to Taejongdae",
-                description: "Classic Busan hike to a historic lighthouse with panoramic ocean views.",
-                difficulty_text: "Easy to Moderate"
-            },
-            {
-                name: "Yongdusan Park Summit",
-                duration: ["short"],
-                difficulty: ["easy"],
-                scenery: ["cityview"],
-                season: ["spring", "summer", "fall", "winter"],
-                transport: ["yes", "either"],
-                time: "30 minutes",
-                highlights: "Busan Tower, city panorama, cultural events, central location",
-                directions: "Subway Line 1 → Nampo Station → Exit 1 → 5-minute walk",
-                description: "Quick city center hike with iconic Busan Tower and 360° city views.",
-                difficulty_text: "Easy"
-            },
-            {
-                name: "Amnam Park Cliff Walk",
-                duration: ["medium"],
-                difficulty: ["moderate"],
-                scenery: ["ocean"],
-                season: ["fall", "winter", "spring"],
-                transport: ["no", "either"],
-                time: "1.5 hours",
-                highlights: "Dramatic cliffs, suspension bridge, Oryukdo Islands view",
-                directions: "Bus 27 or taxi to Amnam Park → follow cliff trail markers",
-                description: "Thrilling cliff-edge walk with views of the famous Oryukdo Islands.",
-                difficulty_text: "Moderate"
-            },
-            {
-                name: "Baekyangsan Alpine Trail",
-                duration: ["long"],
-                difficulty: ["challenging"],
-                scenery: ["forest", "cityview"],
-                season: ["spring", "fall"],
-                transport: ["no", "either"],
-                time: "4 hours",
-                highlights: "Alpine environment, challenging ascent, pristine nature, summit views",
-                directions: "Car required → Drive to Baekyangsan entrance → Follow alpine trail signs",
-                description: "Challenging mountain hike for experienced hikers seeking pristine alpine beauty.",
-                difficulty_text: "Challenging"
-            }
-        ];
+  <section>
+    <h2>Success Criteria</h2>
+    <ul>
+      <li>Fully functional site that matches users to hikes based on 5 preference factors</li>
+      <li>Includes data for all 10 featured mountains</li>
+      <li>UI is clean, interactive, and works on mobile</li>
+      <li>At least one stretch goal implemented (e.g., animations, responsive layout)</li>
+      <li>PRD and process documentation complete and clearly written</li>
+    </ul>
+  </section>
 
-        function getRecommendation() {
-            const formData = {
-                duration: getSelectedValue('duration'),
-                difficulty: getSelectedValue('difficulty'),
-                scenery: getSelectedValue('scenery'),
-                season: getSelectedValue('season'),
-                transport: getSelectedValue('transport')
-            };
+  <section>
+    <h2>Technical Notes</h2>
+    <ul>
+      <li>Built entirely with HTML, CSS, and JavaScript – no external dependencies</li>
+      <li>Uses a simple scoring algorithm to rank hikes by user input</li>
+      <li>All content is self-contained and easily portable</li>
+    </ul>
+  </section>
 
-            // Check if all questions are answered
-            for (let key in formData) {
-                if (!formData[key]) {
-                    alert('Please answer all questions to get your perfect trail recommendation!');
-                    return;
-                }
-            }
+  <section>
+    <h2>Deliverables</h2>
+    <ul>
+      <li>Standalone HTML site (no external libraries or APIs)</li>
+      <li>Product Requirements Document (this page)</li>
+      <li>Live demo hosted on GitHub Pages</li>
+      <li>Process documentation in Google Docs</li>
+    </ul>
+  </section>
 
-            // Find matching trails
-            const matchingTrails = trails.filter(trail => {
-                return trail.duration.includes(formData.duration) &&
-                       trail.difficulty.includes(formData.difficulty) &&
-                       trail.scenery.includes(formData.scenery) &&
-                       trail.season.includes(formData.season) &&
-                       trail.transport.includes(formData.transport);
-            });
+</div>
 
-            // If no exact match, find best partial match
-            let recommendedTrail;
-            if (matchingTrails.length > 0) {
-                recommendedTrail = matchingTrails[Math.floor(Math.random() * matchingTrails.length)];
-            } else {
-                // Find trail that matches most criteria
-                let bestMatch = trails[0];
-                let maxScore = 0;
-                
-                trails.forEach(trail => {
-                    let score = 0;
-                    if (trail.duration.includes(formData.duration)) score++;
-                    if (trail.difficulty.includes(formData.difficulty)) score++;
-                    if (trail.scenery.includes(formData.scenery)) score++;
-                    if (trail.season.includes(formData.season)) score++;
-                    if (trail.transport.includes(formData.transport)) score++;
-                    
-                    if (score > maxScore) {
-                        maxScore = score;
-                        bestMatch = trail;
-                    }
-                });
-                
-                recommendedTrail = bestMatch;
-            }
+<div class="footer">
+  &copy; 2025 Samandar | Project for Interactive Web Class
+</div>
 
-            displayRecommendation(recommendedTrail);
-        }
-
-        function getSelectedValue(name) {
-            const selected = document.querySelector(`input[name="${name}"]:checked`);
-            return selected ? selected.value : null;
-        }
-
-        function displayRecommendation(trail) {
-            const resultCard = document.getElementById('resultCard');
-            
-            resultCard.innerHTML = `
-                <div class="trail-name">${trail.name}</div>
-                
-                <div class="trail-info">
-                    <div class="info-item">
-                        <div class="info-label">Duration</div>
-                        <div class="info-value">🕐 ${trail.time}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Difficulty</div>
-                        <div class="info-value">⭐ ${trail.difficulty_text}</div>
-                    </div>
-                </div>
-
-                <p style="font-size: 1.1em; line-height: 1.6; margin: 20px 0; color: #555;">
-                    ${trail.description}
-                </p>
-
-                <div class="highlights">
-                    <div class="info-label">✨ Highlights</div>
-                    <div style="margin-top: 10px; font-size: 1.1em; color: #333;">
-                        ${trail.highlights}
-                    </div>
-                </div>
-
-                <div class="directions">
-                    <div class="info-label">🚇 How to Get There</div>
-                    <div style="margin-top: 10px; font-size: 1.1em; color: #333;">
-                        ${trail.directions}
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('quizForm').style.display = 'none';
-            document.getElementById('resultContainer').style.display = 'block';
-            
-            // Smooth scroll to results
-            document.getElementById('resultContainer').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        }
-
-        function resetQuiz() {
-            // Clear all radio button selections
-            const radios = document.querySelectorAll('input[type="radio"]');
-            radios.forEach(radio => radio.checked = false);
-            
-            // Show form, hide results
-            document.getElementById('quizForm').style.display = 'block';
-            document.getElementById('resultContainer').style.display = 'none';
-            
-            // Scroll back to top
-            document.querySelector('.container').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        }
-
-        // Add some interactive animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add hover effect sound (visual feedback)
-            const options = document.querySelectorAll('.option');
-            options.forEach(option => {
-                option.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.02)';
-                });
-                option.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1)';
-                });
-            });
-        });
-    </script>
 </body>
 </html>
