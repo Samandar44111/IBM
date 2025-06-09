@@ -441,272 +441,260 @@
     </div>
 
     <script>
-        const trails = [
-            {
-                name: "Geumjeongsan Fortress Trail",
-                duration: ["medium", "long"],
-                difficulty: ["moderate"],
-                scenery: ["fortress", "cityview"],
-                season: ["spring", "fall"],
-                transport: ["yes", "either"],
-                time: "2.5 hours",
-                highlights: "Ancient fortress walls, panoramic city views, Beomeosa Temple, historical significance",
-                directions: "Subway Line 1 → Beomeosa Station → Exit 5 → 10-minute walk to trailhead",
-                description: "Explore Korea's largest mountain fortress with stunning views of Busan city.",
-                difficulty_text: "Moderate"
-            },
-            {
-                name: "Jangsan Forest Trail",
-                duration: ["medium"],
-                difficulty: ["easy", "moderate"],
-                scenery: ["forest", "ocean"],
-                season: ["spring", "summer", "fall"],
-                transport: ["yes", "either"],
-                time: "1.5 hours",
-                highlights: "Dense forest, coastal views, peaceful atmosphere, diverse wildlife",
-                directions: "Subway Line 2 → Jangsan Station → Exit 1 → Bus 1003 to trailhead",
-                description: "A serene forest hike with glimpses of the ocean through the trees.",
-                difficulty_text: "Easy to Moderate"
-            },
-            {
-                name: "Hwangryeongsan Temple Circuit",
-                duration: ["short", "medium"],
-                difficulty: ["easy"],
-                scenery: ["temples", "forest"],
-                season: ["spring", "summer", "fall", "winter"],
-                transport: ["yes", "either"],
-                time: "1 hour",
-                highlights: "Peaceful temples, meditation spots, cherry blossoms in spring",
-                directions: "Subway Line 3 → Namsan Station → Exit 2 → 5-minute walk",
-                description: "A gentle walk connecting beautiful Buddhist temples on a low mountain.",
-                difficulty_text: "Easy"
-            },
-            {
-                name: "Igidae Coastal Trail",
-                duration: ["medium"],
-                difficulty: ["easy", "moderate"],
-                scenery: ["ocean", "forest"],
-                season: ["spring", "summer", "fall"],
-                transport: ["yes", "either"],
-                time: "2 hours",
-                highlights: "Dramatic cliffs, ocean waves, lighthouse, coastal forest",
-                directions: "Subway Line 2 → Gyeongseong Univ. Station → Bus 24 to Igidae",
-                description: "Walk along dramatic coastal cliffs with breathtaking ocean views.",
-                difficulty_text: "Easy to Moderate"
-            },
-            {
-                name: "Geumgang Park Cherry Trail",
-                duration: ["short"],
-                difficulty: ["easy"],
-                scenery: ["cityview", "forest"],
-                season: ["spring"],
-                transport: ["yes", "either"],
-                time: "45 minutes",
-                highlights: "Cherry blossoms, city views, cable car option, family-friendly",
-                directions: "Subway Line 1 → Dongnae Station → Bus 203 to Geumgang Park",
-                description: "Perfect spring hike through thousands of cherry trees with city panoramas.",
-                difficulty_text: "Easy"
-            },
-            {
-                name: "Molundae Rocky Shore Trail",
-                duration: ["short", "medium"],
-                difficulty: ["moderate"],
-                scenery: ["ocean"],
-                season: ["fall", "winter", "spring"],
-                transport: ["no", "either"],
-                time: "1.5 hours",
-                highlights: "Unique rock formations, crashing waves, photography spots",
-                directions: "Bus 27 to Molundae → 10-minute walk to rocky shore",
-                description: "Explore unique geological formations along Busan's rugged coastline.",
-                difficulty_text: "Moderate"
-            },
-            {
-                name: "Taejongdae Lighthouse Trail",
-                duration: ["medium"],
-                difficulty: ["easy", "moderate"],
-                scenery: ["ocean", "forest"],
-                season: ["spring", "summer", "fall", "winter"],
-                transport: ["yes", "either"],
-                time: "2 hours",
-                highlights: "Historic lighthouse, cliff views, observatory, sea breeze",
-                directions: "Subway Line 1 → Jagalchi Station → Bus 8, 30, 88 to Taejongdae",
-                description: "Classic Busan hike to a historic lighthouse with panoramic ocean views.",
-                difficulty_text: "Easy to Moderate"
-            },
-            {
-                name: "Yongdusan Park Summit",
-                duration: ["short"],
-                difficulty: ["easy"],
-                scenery: ["cityview"],
-                season: ["spring", "summer", "fall", "winter"],
-                transport: ["yes", "either"],
-                time: "30 minutes",
-                highlights: "Busan Tower, city panorama, cultural events, central location",
-                directions: "Subway Line 1 → Nampo Station → Exit 1 → 5-minute walk",
-                description: "Quick city center hike with iconic Busan Tower and 360° city views.",
-                difficulty_text: "Easy"
-            },
-            {
-                name: "Amnam Park Cliff Walk",
-                duration: ["medium"],
-                difficulty: ["moderate"],
-                scenery: ["ocean"],
-                season: ["fall", "winter", "spring"],
-                transport: ["no", "either"],
-                time: "1.5 hours",
-                highlights: "Dramatic cliffs, suspension bridge, Oryukdo Islands view",
-                directions: "Bus 27 or taxi to Amnam Park → follow cliff trail markers",
-                description: "Thrilling cliff-edge walk with views of the famous Oryukdo Islands.",
-                difficulty_text: "Moderate"
-            },
-            {
-                name: "Baekyangsan Alpine Trail",
-                duration: ["long"],
-                difficulty: ["challenging"],
-                scenery: ["forest", "cityview"],
-                season: ["spring", "fall"],
-                transport: ["no", "either"],
-                time: "4 hours",
-                highlights: "Alpine environment, challenging ascent, pristine nature, summit views",
-                directions: "Car required → Drive to Baekyangsan entrance → Follow alpine trail signs",
-                description: "Challenging mountain hike for experienced hikers seeking pristine alpine beauty.",
-                difficulty_text: "Challenging"
-            }
+    const trails = [
+        {
+            name: "Geumjeongsan Fortress Trail",
+            duration: ["medium", "long"],
+            difficulty: ["moderate"],
+            scenery: ["fortress", "cityview"],
+            season: ["spring", "fall"],
+            transport: ["yes", "either"],
+            time: "2.5 hours",
+            highlights: "Ancient fortress walls, panoramic city views, Beomeosa Temple, historical significance",
+            directions: "Subway Line 1 → Beomeosa Station → Exit 5 → 10-minute walk to trailhead",
+            description: "Explore Korea's largest mountain fortress with stunning views of Busan city.",
+            difficulty_text: "Moderate",
+            image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/10.JPG"
+        },
+        {
+            name: "Jangsan Forest Trail",
+            duration: ["medium"],
+            difficulty: ["easy", "moderate"],
+            scenery: ["forest", "ocean"],
+            season: ["spring", "summer", "fall"],
+            transport: ["yes", "either"],
+            time: "1.5 hours",
+            highlights: "Dense forest, coastal views, peaceful atmosphere, diverse wildlife",
+            directions: "Subway Line 2 → Jangsan Station → Exit 1 → Bus 1003 to trailhead",
+            description: "A serene forest hike with glimpses of the ocean through the trees.",
+            difficulty_text: "Easy to Moderate",
+            image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/9.JPG"
+        },
+        {
+            name: "Hwangryeongsan Temple Circuit",
+            duration: ["short", "medium"],
+            difficulty: ["easy"],
+            scenery: ["temples", "forest"],
+            season: ["spring", "summer", "fall", "winter"],
+            transport: ["yes", "either"],
+            time: "1 hour",
+            highlights: "Peaceful temples, meditation spots, cherry blossoms in spring",
+            directions: "Subway Line 3 → Namsan Station → Exit 2 → 5-minute walk",
+            description: "A gentle walk connecting beautiful Buddhist temples on a low mountain.",
+            difficulty_text: "Easy",
+            image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/8.JPG"
+        },
+        {
+            name: "Igidae Coastal Trail",
+            duration: ["medium"],
+            difficulty: ["easy", "moderate"],
+            scenery: ["ocean", "forest"],
+            season: ["spring", "summer", "fall"],
+            transport: ["yes", "either"],
+            time: "2 hours",
+            highlights: "Dramatic cliffs, ocean waves, lighthouse, coastal forest",
+            directions: "Subway Line 2 → Gyeongseong Univ. Station → Bus 24 to Igidae",
+            description: "Walk along dramatic coastal cliffs with breathtaking ocean views.",
+            difficulty_text: "Easy to Moderate",
+            image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/7.JPG"
+        },
+        {
+            name: "Geumgang Park Cherry Trail",
+            duration: ["short"],
+            difficulty: ["easy"],
+            scenery: ["cityview", "forest"],
+            season: ["spring"],
+            transport: ["yes", "either"],
+            time: "45 minutes",
+            highlights: "Cherry blossoms, city views, cable car option, family-friendly",
+            directions: "Subway Line 1 → Dongnae Station → Bus 203 to Geumgang Park",
+            description: "Perfect spring hike through thousands of cherry trees with city panoramas.",
+            difficulty_text: "Easy",
+            image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/6.JPG"
+        },
+        {
+            name: "Molundae Rocky Shore Trail",
+            duration: ["short", "medium"],
+            difficulty: ["moderate"],
+            scenery: ["ocean"],
+            season: ["fall", "winter", "spring"],
+            transport: ["no", "either"],
+            time: "1.5 hours",
+            highlights: "Unique rock formations, crashing waves, photography spots",
+            directions: "Bus 27 to Molundae → 10-minute walk to rocky shore",
+            description: "Explore unique geological formations along Busan's rugged coastline.",
+            difficulty_text: "Moderate",
+            image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/5.JPG"
+        },
+        {
+            name: "Taejongdae Lighthouse Trail",
+            duration: ["medium"],
+            difficulty: ["easy", "moderate"],
+            scenery: ["ocean", "forest"],
+            season: ["spring", "summer", "fall", "winter"],
+            transport: ["yes", "either"],
+            time: "2 hours",
+            highlights: "Busan Tower, city panorama, cultural events, central location",
+            directions: "Subway Line 1 → Nampo Station → Exit 1 → 5-minute walk",
+            description: "Quick city center hike with iconic Busan Tower and 360° city views.",
+            difficulty_text: "Easy to Moderate",
+            image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/4.JPG"
+        },
+        {
+            name: "Yongdusan Park Summit",
+            duration: ["short"],
+            difficulty: ["easy"],
+            scenery: ["cityview"],
+            season: ["spring", "summer", "fall", "winter"],
+            transport: ["yes", "either"],
+            time: "30 minutes",
+            highlights: "Busan Tower, city panorama, cultural events, central location",
+            directions: "Subway Line 1 → Nampo Station → Exit 1 → 5-minute walk",
+            description: "Quick city center hike with iconic Busan Tower and 360° city views.",
+            difficulty_text: "Easy",
+            image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/3.JPG"
+        },
+        {
+            name: "Amnam Park Cliff Walk",
+            duration: ["medium"],
+            difficulty: ["moderate"],
+            scenery: ["ocean"],
+            season: ["fall", "winter", "spring"],
+            transport: ["no", "either"],
+            time: "1.5 hours",
+            highlights: "Dramatic cliffs, suspension bridge, Oryukdo Islands view",
+            directions: "Bus 27 or taxi to Amnam Park → follow cliff trail markers",
+            description: "Thrilling cliff-edge walk with views of the famous Oryukdo Islands.",
+            difficulty_text: "Moderate",
+            image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/2.JPG"
+        },
+        {
+            name: "Baekyangsan Alpine Trail",
+            duration: ["long"],
+            difficulty: ["challenging"],
+            scenery: ["forest", "cityview"],
+            season: ["spring", "fall"],
+            transport: ["no", "either"],
+            time: "4 hours",
+            highlights: "Alpine environment, challenging ascent, pristine nature, summit views",
+            directions: "Car required → Drive to Baekyangsan entrance → Follow alpine trail signs",
+            description: "Challenging mountain hike for experienced hikers seeking pristine alpine beauty.",
+            difficulty_text: "Challenging",
+            image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/1.JPG"
+        }
         ];
 
-        function getRecommendation() {
-            const formData = {
-                duration: getSelectedValue('duration'),
-                difficulty: getSelectedValue('difficulty'),
-                scenery: getSelectedValue('scenery'),
-                season: getSelectedValue('season'),
-                transport: getSelectedValue('transport')
-            };
+    function getRecommendation() {
+        const formData = {
+            duration: getSelectedValue('duration'),
+            difficulty: getSelectedValue('difficulty'),
+            scenery: getSelectedValue('scenery'),
+            season: getSelectedValue('season'),
+            transport: getSelectedValue('transport')
+        };
 
-            // Check if all questions are answered
-            for (let key in formData) {
-                if (!formData[key]) {
-                    alert('Please answer all questions to get your perfect trail recommendation!');
-                    return;
+        for (let key in formData) {
+            if (!formData[key]) {
+                alert('Please answer all questions to get your perfect trail recommendation!');
+                return;
+            }
+        }
+
+        const matchingTrails = trails.filter(trail => {
+            return trail.duration.includes(formData.duration) &&
+                   trail.difficulty.includes(formData.difficulty) &&
+                   trail.scenery.includes(formData.scenery) &&
+                   trail.season.includes(formData.season) &&
+                   trail.transport.includes(formData.transport);
+        });
+
+        let recommendedTrail;
+        if (matchingTrails.length > 0) {
+            recommendedTrail = matchingTrails[Math.floor(Math.random() * matchingTrails.length)];
+        } else {
+            let bestMatch = trails[0];
+            let maxScore = 0;
+            
+            trails.forEach(trail => {
+                let score = 0;
+                if (trail.duration.includes(formData.duration)) score++;
+                if (trail.difficulty.includes(formData.difficulty)) score++;
+                if (trail.scenery.includes(formData.scenery)) score++;
+                if (trail.season.includes(formData.season)) score++;
+                if (trail.transport.includes(formData.transport)) score++;
+                
+                if (score > maxScore) {
+                    maxScore = score;
+                    bestMatch = trail;
                 }
-            }
-
-            // Find matching trails
-            const matchingTrails = trails.filter(trail => {
-                return trail.duration.includes(formData.duration) &&
-                       trail.difficulty.includes(formData.difficulty) &&
-                       trail.scenery.includes(formData.scenery) &&
-                       trail.season.includes(formData.season) &&
-                       trail.transport.includes(formData.transport);
             });
-
-            // If no exact match, find best partial match
-            let recommendedTrail;
-            if (matchingTrails.length > 0) {
-                recommendedTrail = matchingTrails[Math.floor(Math.random() * matchingTrails.length)];
-            } else {
-                // Find trail that matches most criteria
-                let bestMatch = trails[0];
-                let maxScore = 0;
-                
-                trails.forEach(trail => {
-                    let score = 0;
-                    if (trail.duration.includes(formData.duration)) score++;
-                    if (trail.difficulty.includes(formData.difficulty)) score++;
-                    if (trail.scenery.includes(formData.scenery)) score++;
-                    if (trail.season.includes(formData.season)) score++;
-                    if (trail.transport.includes(formData.transport)) score++;
-                    
-                    if (score > maxScore) {
-                        maxScore = score;
-                        bestMatch = trail;
-                    }
-                });
-                
-                recommendedTrail = bestMatch;
-            }
-
-            displayRecommendation(recommendedTrail);
+            
+            recommendedTrail = bestMatch;
         }
 
-        function getSelectedValue(name) {
-            const selected = document.querySelector(`input[name="${name}"]:checked`);
-            return selected ? selected.value : null;
-        }
+        displayRecommendation(recommendedTrail);
+    }
 
-        function displayRecommendation(trail) {
-            const resultCard = document.getElementById('resultCard');
-            
-            resultCard.innerHTML = `
-                <div class="trail-name">${trail.name}</div>
-                
-                <div class="trail-info">
-                    <div class="info-item">
-                        <div class="info-label">Duration</div>
-                        <div class="info-value">🕐 ${trail.time}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Difficulty</div>
-                        <div class="info-value">⭐ ${trail.difficulty_text}</div>
-                    </div>
+    function getSelectedValue(name) {
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        return selected ? selected.value : null;
+    }
+
+    function displayRecommendation(trail) {
+        const resultCard = document.getElementById('resultCard');
+        
+        resultCard.innerHTML = `
+            <img src="${trail.image}" alt="${trail.name}" style="width:100%; border-radius:15px; margin-bottom:20px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+            <div class="trail-name">${trail.name}</div>
+            <div class="trail-info">
+                <div class="info-item">
+                    <div class="info-label">Duration</div>
+                    <div class="info-value">🕐 ${trail.time}</div>
                 </div>
-
-                <p style="font-size: 1.1em; line-height: 1.6; margin: 20px 0; color: #555;">
-                    ${trail.description}
-                </p>
-
-                <div class="highlights">
-                    <div class="info-label">✨ Highlights</div>
-                    <div style="margin-top: 10px; font-size: 1.1em; color: #333;">
-                        ${trail.highlights}
-                    </div>
+                <div class="info-item">
+                    <div class="info-label">Difficulty</div>
+                    <div class="info-value">⭐ ${trail.difficulty_text}</div>
                 </div>
-
-                <div class="directions">
-                    <div class="info-label">🚇 How to Get There</div>
-                    <div style="margin-top: 10px; font-size: 1.1em; color: #333;">
-                        ${trail.directions}
-                    </div>
+            </div>
+            <p style="font-size: 1.1em; line-height: 1.6; margin: 20px 0; color: #555;">
+                ${trail.description}
+            </p>
+            <div class="highlights">
+                <div class="info-label">✨ Highlights</div>
+                <div style="margin-top: 10px; font-size: 1.1em; color: #333;">
+                    ${trail.highlights}
                 </div>
-            `;
+            </div>
+            <div class="directions">
+                <div class="info-label">🚇 How to Get There</div>
+                <div style="margin-top: 10px; font-size: 1.1em; color: #333;">
+                    ${trail.directions}
+                </div>
+            </div>
+        `;
 
-            document.getElementById('quizForm').style.display = 'none';
-            document.getElementById('resultContainer').style.display = 'block';
-            
-            // Smooth scroll to results
-            document.getElementById('resultContainer').scrollIntoView({ 
-                behavior: 'smooth' 
+        document.getElementById('quizForm').style.display = 'none';
+        document.getElementById('resultContainer').style.display = 'block';
+        document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetQuiz() {
+        document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+        document.getElementById('quizForm').style.display = 'block';
+        document.getElementById('resultContainer').style.display = 'none';
+        document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
             });
-        }
-
-        function resetQuiz() {
-            // Clear all radio button selections
-            const radios = document.querySelectorAll('input[type="radio"]');
-            radios.forEach(radio => radio.checked = false);
-            
-            // Show form, hide results
-            document.getElementById('quizForm').style.display = 'block';
-            document.getElementById('resultContainer').style.display = 'none';
-            
-            // Scroll back to top
-            document.querySelector('.container').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        }
-
-        // Add some interactive animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add hover effect sound (visual feedback)
-            const options = document.querySelectorAll('.option');
-            options.forEach(option => {
-                option.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.02)';
-                });
-                option.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1)';
-                });
+            option.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
             });
         });
-    </script>
+    });
+</script>
 </body>
 </html>
