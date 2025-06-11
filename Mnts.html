@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your Perfect Busan Hike</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .form-section {
+            padding: 40px;
+            background: #f8f9fa;
+        }
+
+        .question-group {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .question-group:hover {
+            transform: translateY(-5px);
+        }
+
+        .question-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .question-icon {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .option {
+            position: relative;
+        }
+
+        .option input[type="radio"] {
+            display: none;
+        }
+
+        .option label {
+            display: block;
+            padding: 15px 20px;
+            background: #ecf0f1;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .option label:hover {
+            background: #d5dbdb;
+            transform: scale(1.05);
+        }
+
+        .option input[type="radio"]:checked + label {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border-color: #2980b9;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 30px auto;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
+        }
+
+        .results {
+            display: none;
+            padding: 40px;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .trail-card {
+            background: white;
+            color: #2c3e50;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .trail-name {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+
+        .trail-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 1.1em;
+            color: #2c3e50;
+        }
+
+        .trail-description {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .highlights {
+            background: #f39c12;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .highlights h4 {
+            margin-bottom: 10px;
+        }
+
+        .transport {
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .transport h4 {
+            margin-bottom: 10px;
+        }
+
+        .reset-btn {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .options {
+                grid-template-columns: 1fr;
+            }
+            
+            .trail-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏔️ Build Your Perfect Busan Hike</h1>
+            <p>Discover the perfect mountain trail in Busan tailored just for you!</p>
+        </div>
+
+        <div class="form-section" id="quiz-section">
+            <form id="hiking-quiz">
+                <div class="question-group">
+                    <div class="question-title">
+                        <span class="question-icon">⏱️</span>
+                        How long do you want to hike?
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="time-short" name="duration" value="short">
+                            <label for="time-short">Under 2 hours<br><small>Quick adventure</small></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="time-medium" name="duration" value="medium">
+                            <label for="time-medium">2-4 hours<br><small>Half-day hike</small></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="time-long" name="duration" value="long">
+                            <label for="time-long">4+ hours<br><small>Full-day adventure</small></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <div class="question-title">
+                        <span class="question-icon">💪</span>
+                        What difficulty level do you prefer?
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="diff-easy" name="difficulty" value="easy">
+                            <label for="diff-easy">Easy<br><small>Gentle slopes, family-friendly</small></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="diff-moderate" name="difficulty" value="moderate">
+                            <label for="diff-moderate">Moderate<br><small>Some climbing, good workout</small></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="diff-challenging" name="difficulty" value="challenging">
+                            <label for="diff-challenging">Challenging<br><small>Steep climbs, experienced hikers</small></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <div class="question-title">
+                        <span class="question-icon">🌸</span>
+                        What do you want to see?
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="view-temple" name="scenery" value="temple">
+                            <label for="view-temple">Buddhist Temples<br><small>Cultural & spiritual sites</small></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="view-city" name="scenery" value="city">
+                            <label for="view-city">City Skyline<br><small>Urban panoramic views</small></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="view-ocean" name="scenery" value="ocean">
+                            <label for="view-ocean">Ocean Views<br><small>Coastal landscapes</small></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="view-fortress" name="scenery" value="fortress">
+                            <label for="view-fortress">Historical Sites<br><small>Ancient fortresses & ruins</small></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <div class="question-title">
+                        <span class="question-icon">🍂</span>
+                        When are you planning to go?
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="season-spring" name="season" value="spring">
+                            <label for="season-spring">Spring<br><small>Cherry blossoms & mild weather</small></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="season-summer" name="season" value="summer">
+                            <label for="season-summer">Summer<br><small>Lush greenery & festivals</small></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="season-fall" name="season" value="fall">
+                            <label for="season-fall">Fall<br><small>Autumn colors & crisp air</small></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="season-winter" name="season" value="winter">
+                            <label for="season-winter">Winter<br><small>Snow views & fewer crowds</small></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <div class="question-title">
+                        <span class="question-icon">🚇</span>
+                        Do you need public transportation access?
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="transport-yes" name="transport" value="public">
+                            <label for="transport-yes">Yes, please<br><small>Subway/bus accessible</small></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="transport-no" name="transport" value="private">
+                            <label for="transport-no">No, I have a car<br><small>Driving is fine</small></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="transport-either" name="transport" value="either">
+                            <label for="transport-either">Either is fine<br><small>Flexible with transport</small></label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">🔍 Find My Perfect Hike!</button>
+            </form>
+        </div>
+
+        <div class="results" id="results-section">
+            <h2>🎯 Your Perfect Busan Hiking Recommendations</h2>
+            <div id="trail-recommendations"></div>
+            <button class="reset-btn" onclick="resetQuiz()">🔄 Take Quiz Again</button>
+        </div>
+    </div>
+
+    <script>
+        // Top 10 Busan Mountains Data
+        const mountains = [
+            {
+                name: "Geumjeongsan (금정산)",
+                height: "802m",
+                duration: "medium",
+                difficulty: "moderate",
+                scenery: ["temple", "fortress"],
+                description: "Busan's highest peak featuring the historic Geumjeongsan Fortress and beautiful Beomeosa Temple.",
+                highlights: "Ancient fortress walls, Beomeosa Temple (678 AD), panoramic city views, historical significance",
+                transport: "Subway Line 1 → Beomeosa Station (Exit 5) → 20-min walk to trailhead",
+                bestSeason: ["spring", "fall"],
+                publicTransport: true
+              image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/10.JPG"  },
+            },
+            {
+                name: "Hwangnyeongsan (황령산)",
+                height: "427m",
+                duration: "short",
+                difficulty: "easy",
+                scenery: ["city", "ocean"],
+                description: "Popular for night views and radio tower, offering 360-degree views of Busan.",
+                highlights: "Busan Tower replica, night illumination, city skyline, easy cable car access",
+                transport: "Subway Line 3 → Namcheon Station → Bus 51 → Hwangnyeongsan Observatory",
+                bestSeason: ["fall", "winter"],
+                publicTransport: true
+              image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/8.JPG"
+            },
+            {
+                name: "Jangsan (장산)",
+                height: "634m",
+                duration: "medium",
+                difficulty: "moderate",
+                scenery: ["ocean", "city"],
+                description: "Great for sunrise views and overlooking Haeundae Beach area.",
+                highlights: "Sunrise viewpoint, Haeundae Beach panorama, dense forest trails, seasonal wildflowers",
+                transport: "Subway Line 2 → Jangsan Station (Exit 2) → 15-min walk to trail entrance",
+                bestSeason: ["spring", "summer"],
+                publicTransport: true
+              image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/9.JPG"
+            },
+            {
+                name: "Amisan (아미산)",
+                height: "275m",
+                duration: "short",
+                difficulty: "easy",
+                scenery: ["temple", "city"],
+                description: "Easy urban hike with multiple temples and great for beginners.",
+                highlights: "Multiple Buddhist temples, urban forest, cherry blossoms in spring, easy accessibility",
+                transport: "Subway Line 1 → Choryang Station → 10-min walk to trailhead",
+                bestSeason: ["spring", "fall"],
+                publicTransport: true
+              image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/7.JPG"
+            },
+            {
+                name: "Molundae (몰운대)",
+                height: "95m",
+                duration: "short",
+                difficulty: "easy",
+                scenery: ["ocean", "fortress"],
+                description: "Coastal cliff walking with stunning ocean views and historical significance.",
+                highlights: "Dramatic sea cliffs, historical Japanese fortress ruins, lighthouse views, coastal photography",
+                transport: "Subway Line 1 → Dadaepo Beach Station → Bus 2 → Molundae entrance",
+                bestSeason: ["fall", "winter"],
+                publicTransport: true
+               image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/6.JPG"
+            },
+            {
+                name: "Gijangsan (기장산)",
+                height: "559m",
+                duration: "medium",
+                difficulty: "moderate",
+                scenery: ["temple", "ocean"],
+                description: "Peaceful hike with ancient temples and coastal views near Gijang County.",
+                highlights: "Traditional temples, peaceful forest paths, coastal vistas, local cultural sites",
+                transport: "Gijang County: Best accessed by car or tour bus from central Busan",
+                bestSeason: ["spring", "summer"],
+                publicTransport: false
+              image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/5.JPG"
+            },
+            {
+                name: "Yeongnamsan (영남산)",
+                height: "622m",
+                duration: "long",
+                difficulty: "challenging",
+                scenery: ["fortress", "city"],
+                description: "Challenging hike with rewarding views and historical mountain fortress ruins.",
+                highlights: "Ancient mountain fortress, challenging rock climbing sections, historical significance, panoramic views",
+                transport: "Subway Line 3 → Yeonsan Station → Bus 31 → Mountain base (requires hiking experience)",
+                bestSeason: ["spring", "fall"],
+                publicTransport: true
+              image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/4.JPG"
+            },
+            {
+                name: "Dalmaji Hill (달마지)",
+                height: "180m",
+                duration: "short",
+                difficulty: "easy",
+                scenery: ["ocean", "city"],
+                description: "Scenic coastal walk famous for sunrise and romantic cherry blossom road.",
+                highlights: "Cherry blossom tunnel, sunrise/sunset views, Haeundae skyline, romantic walking paths",
+                transport: "Subway Line 2 → Haeundae Station → 15-min walk along the coast",
+                bestSeason: ["spring", "summer"],
+                publicTransport: true
+              image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/3.JPG"
+            },
+            {
+                name: "Baegyangsan (백양산)",
+                height: "642m",
+                duration: "medium",
+                difficulty: "moderate",
+                scenery: ["temple", "city"],
+                description: "Urban mountain with multiple peaks and great city overview.",
+                highlights: "Multi-peak hiking, urban forest, city panorama, recreational facilities",
+                transport: "Subway Line 2 → Namposan Station → Local bus to mountain base",
+                bestSeason: ["fall", "spring"],
+                publicTransport: true
+              image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/1.JPG"
+            },
+            {
+                name: "Cheonjeyeon Falls Trail (천제연)",
+                height: "300m",
+                duration: "short",
+                difficulty: "easy",
+                scenery: ["ocean", "temple"],
+                description: "Beautiful waterfall hike combining nature and coastal views.",
+                highlights: "Multi-tier waterfalls, coastal trails, natural pools, botanical gardens",
+                transport: "Dongbaek Island area: Subway Line 2 → Haeundae → Walk/taxi to trail",
+                bestSeason: ["summer", "fall"],
+                publicTransport: true
+              image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/2.JPG"
+            }
+        ];
+
+        document.getElementById('hiking-quiz').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(e.target);
+            const preferences = {};
+            
+            for (let [key, value] of formData.entries()) {
+                preferences[key] = value;
+            }
+            
+            // Find matching trails
+            const recommendations = findMatchingTrails(preferences);
+            
+            // Display results
+            displayResults(recommendations);
+        });
+
+        function findMatchingTrails(preferences) {
+            let scored_mountains = mountains.map(mountain => {
+                let score = 0;
+                
+                // Duration match
+                if (mountain.duration === preferences.duration) score += 3;
+                else if (
+                    (preferences.duration === 'short' && mountain.duration === 'medium') ||
+                    (preferences.duration === 'medium' && (mountain.duration === 'short' || mountain.duration === 'long')) ||
+                    (preferences.duration === 'long' && mountain.duration === 'medium')
+                ) score += 1;
+                
+                // Difficulty match
+                if (mountain.difficulty === preferences.difficulty) score += 3;
+                else if (
+                    (preferences.difficulty === 'easy' && mountain.difficulty === 'moderate') ||
+                    (preferences.difficulty === 'moderate' && (mountain.difficulty === 'easy' || mountain.difficulty === 'challenging')) ||
+                    (preferences.difficulty === 'challenging' && mountain.difficulty === 'moderate')
+                ) score += 1;
+                
+                // Scenery match
+                if (mountain.scenery.includes(preferences.scenery)) score += 3;
+                
+                // Season match
+                if (mountain.bestSeason.includes(preferences.season)) score += 2;
+                
+                // Transport preference
+                if (preferences.transport === 'public' && mountain.publicTransport) score += 2;
+                else if (preferences.transport === 'private' && !mountain.publicTransport) score += 2;
+                else if (preferences.transport === 'either') score += 1;
+                
+                return { ...mountain, score };
+            });
+            
+            // Sort by score and return top 3
+            scored_mountains.sort((a, b) => b.score - a.score);
+            return scored_mountains.slice(0, 3);
+        }
+
+        function displayResults(recommendations) {
+            const resultsContainer = document.getElementById('trail-recommendations');
+            
+            resultsContainer.innerHTML = recommendations.map((trail, index) => `
+                <div class="trail-card">
+                    <div class="trail-name">
+                        ${index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'} ${trail.name}
+                    </div>
+                    
+                    <div class="trail-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Height</div>
+                            <div class="detail-value">${trail.height}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Duration</div>
+                            <div class="detail-value">${trail.duration === 'short' ? '1-2 hours' : 
+                                                         trail.duration === 'medium' ? '2-4 hours' : '4+ hours'}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Difficulty</div>
+                            <div class="detail-value">${trail.difficulty.charAt(0).toUpperCase() + trail.difficulty.slice(1)}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Match Score</div>
+                            <div class="detail-value">${Math.round((trail.score / 13) * 100)}%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="trail-description">
+                        ${trail.description}
+                    </div>
+                    
+                    <div class="highlights">
+                        <h4>🌟 Highlights</h4>
+                        <p>${trail.highlights}</p>
+                    </div>
+                    
+                    <div class="transport">
+                        <h4>🚇 How to Get There</h4>
+                        <p>${trail.transport}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Hide quiz and show results
+            document.getElementById('quiz-section').style.display = 'none';
+            document.getElementById('results-section').classList.add('show');
+            
+            // Smooth scroll to results
+            document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            // Reset form
+            document.getElementById('hiking-quiz').reset();
+            
+            // Hide results and show quiz
+            document.getElementById('results-section').classList.remove('show');
+            document.getElementById('quiz-section').style.display = 'block';
+            
+            // Scroll back to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
