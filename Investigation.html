@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile Investigations</title>
+  <style>
+    :root {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --card-bg: #1e1e1e;
+      --card-border: #333;
+      --highlight-bg: #1a2a3a;
+      --highlight-border: #3399ff;
+      --highlight-text: #cceeff;
+      --btn-bg: #3399ff;
+      --btn-hover: #237acc;
+    }
+
+    body.light {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --card-bg: #f9f9f9;
+      --card-border: #ccc;
+      --highlight-bg: #e6f2ff;
+      --highlight-border: #3399ff;
+      --highlight-text: #003366;
+      --btn-bg: #0077cc;
+      --btn-hover: #005fa3;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .toggle-mode {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 0.5rem 1rem;
+      background-color: var(--btn-bg);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, background-color 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+    }
+    .card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .card h2 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.7rem;
+    }
+    .card p {
+      margin: 0.35rem 0;
+      line-height: 1.5;
+    }
+    .conclusion {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background-color: var(--highlight-bg);
+      border-left: 4px solid var(--highlight-border);
+      font-weight: bold;
+      color: var(--highlight-text);
+    }
+    .buttons {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .btn {
+      padding: 0.6rem 1.2rem;
+      background-color: var(--btn-bg);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: var(--btn-hover);
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-mode" onclick="toggleMode()">Toggle Mode</button>
+  <div class="container">
+
+    <div class="card">
+      <img src="Norberto.JPG" alt="Norberto Trey" />
+      <h2>Norberto Trey (aka Michael Moore?)</h2>
+      <p><strong>Location:</strong> England, UK</p>
+      <p><strong>Claimed Identity:</strong> Owns a company supplying chemical and hospital equipment across UK and globally.</p>
+      <p><strong>Personal:</strong> Posts about his son ("his everything"). Deceased dog. Interests suggest liking K-culture.</p>
+      <p><strong>Suspicious Info:</strong> Repeated posts hinting at hacked X account. Users in the comments claim his photos are being used by scammers.</p>
+      <div class="buttons">
+        <a href="https://x.com/Norberto_Trey" target="_blank" class="btn">X Profile</a>
+        <a href="https://pinterest.com/tnorberto" target="_blank" class="btn">Pinterest</a>
+      </div>
+      <div class="conclusion">
+        Conclusion: High likelihood of identity fabrication. "Michael Moore" appears to be a false identity, possibly used for fraudulent purposes. 20–30% ❌
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Peiter.JPG" alt="Pieter Mouthaan" />
+      <h2>Pieter Mouthaan (a.k.a. Pieter Levels)</h2>
+      <p><strong>Claimed Identity:</strong> Dutch entrepreneur and developer, founder of "Photo AI"</p>
+      <p><strong>Findings:</strong> 
+        Known as Pieter Levels, a real Dutch developer and creator of Nomad List, Remote OK, and Photo AI. Holds business degree from Rotterdam School of Management. Actual name is often confused but matches digital presence and facial features.
+      </p>
+      <p><strong>Extra Info:</strong> While some suspected AI usage or scams due to engagement levels, most of his presence checks out. Projects are real and functioning. 
+      </p>
+      <div class="buttons">
+        <a href="https://x.com/levelsio" target="_blank" class="btn">X Profile</a>
+        <a href="https://www.startupideasai.com" target="_blank" class="btn">Startup Ideas AI</a>
+      </div>
+      <div class="conclusion">
+        Conclusion: The identity given is accurate. Only confusion was the last name. He is a legitimate entrepreneur from the Netherlands. Verified Human: 90% ✅
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Kenneth.JPG" alt="Kenneth Dean" />
+      <h2>Kenneth Dean</h2>
+      <p><strong>Location:</strong> Washington, D.C., USA</p>
+      <p><strong>Claimed Identity:</strong> Vice President at a real estate company (S.C. Herman & Associates, Inc.)</p>
+      <p><strong>Findings:</strong> Timeline shows he began working in 2003, but graduated university in 2023. Some mismatch, but his company exists and has verifiable presence in Washington D.C. Confirmed real by academic reference (professor).</p>
+      <div class="buttons">
+        <p><strong>Bonus:</strong> Even you, Professor has confirmed his identity.</p>
+        <a href="https://www.linkedin.com/in/kenneth-dean-pmp" target="_blank" class="btn">LinkedIn Profile</a>
+      </div>
+      <div class="conclusion">
+        Conclusion: Verified real person with supporting evidence. Company, name, and role confirmed. Some timeline inconsistencies remain, but identity is authentic. 100% 😊
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('light');
+    }
+  </script>
+</body>
+</html>
