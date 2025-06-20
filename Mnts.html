@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Build Your Perfect Busan Hike</title>
-  <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -153,6 +154,26 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
+        .trail-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .trail-image {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            flex-shrink: 0;
+        }
+
+        .trail-info {
+            flex: 1;
+        }
+
         .trail-name {
             font-size: 1.8em;
             font-weight: bold;
@@ -162,7 +183,7 @@
 
         .trail-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
             margin-bottom: 20px;
         }
@@ -241,6 +262,16 @@
             
             .trail-details {
                 grid-template-columns: 1fr;
+            }
+
+            .trail-header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .trail-image {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
@@ -379,139 +410,140 @@
     </div>
 
     <script>
-        // Top 100 Busan Mountains Data
-           const mountains = [
-  {
-    name: "Geumjeongsan (금정산)",
-    height: "802m",
-    duration: "medium",
-    difficulty: "moderate",
-    scenery: ["temple", "fortress"],
-    description: "Busan's highest peak featuring the historic Geumjeongsan Fortress and beautiful Beomeosa Temple.",
-    highlights: "Ancient fortress walls, Beomeosa Temple (678 AD), panoramic city views, historical significance",
-    transport: "Subway Line 1 → Beomeosa Station (Exit 5) → 20-min walk to trailhead",
-    bestSeason: ["spring", "fall"],
-    publicTransport: true,
-    image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/10.JPG"
-  },
-  {
-    name: "Hwangnyeongsan (황령산)",
-    height: "427m",
-    duration: "short",
-    difficulty: "easy",
-    scenery: ["city", "ocean"],
-    description: "Popular for night views and radio tower, offering 360-degree views of Busan.",
-    highlights: "Busan Tower replica, night illumination, city skyline, easy cable car access",
-    transport: "Subway Line 3 → Namcheon Station → Bus 51 → Hwangnyeongsan Observatory",
-    bestSeason: ["fall", "winter"],
-    publicTransport: true,
-    image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/8.JPG"
-  },
-  {
-    name: "Jangsan (장산)",
-    height: "634m",
-    duration: "medium",
-    difficulty: "moderate",
-    scenery: ["ocean", "city"],
-    description: "Great for sunrise views and overlooking Haeundae Beach area.",
-    highlights: "Sunrise viewpoint, Haeundae Beach panorama, dense forest trails, seasonal wildflowers",
-    transport: "Subway Line 2 → Jangsan Station (Exit 2) → 15-min walk to trail entrance",
-    bestSeason: ["spring", "summer"],
-    publicTransport: true,
-    image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/9.JPG"
-  },
-  {
-    name: "Amisan (아미산)",
-    height: "275m",
-    duration: "short",
-    difficulty: "easy",
-    scenery: ["temple", "city"],
-    description: "Easy urban hike with multiple temples and great for beginners.",
-    highlights: "Multiple Buddhist temples, urban forest, cherry blossoms in spring, easy accessibility",
-    transport: "Subway Line 1 → Choryang Station → 10-min walk to trailhead",
-    bestSeason: ["spring", "fall"],
-    publicTransport: true,
-    image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/7.JPG"
-  },
-  {
-    name: "Molundae (몰운대)",
-    height: "95m",
-    duration: "short",
-    difficulty: "easy",
-    scenery: ["ocean", "fortress"],
-    description: "Coastal cliff walking with stunning ocean views and historical significance.",
-    highlights: "Dramatic sea cliffs, historical Japanese fortress ruins, lighthouse views, coastal photography",
-    transport: "Subway Line 1 → Dadaepo Beach Station → Bus 2 → Molundae entrance",
-    bestSeason: ["fall", "winter"],
-    publicTransport: true,
-    image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/6.JPG"
-  },
-  {
-    name: "Gijangsan (기장산)",
-    height: "559m",
-    duration: "medium",
-    difficulty: "moderate",
-    scenery: ["temple", "ocean"],
-    description: "Peaceful hike with ancient temples and coastal views near Gijang County.",
-    highlights: "Traditional temples, peaceful forest paths, coastal vistas, local cultural sites",
-    transport: "Gijang County: Best accessed by car or tour bus from central Busan",
-    bestSeason: ["spring", "summer"],
-    publicTransport: false,
-    image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/5.JPG"
-  },
-  {
-    name: "Yeongnamsan (영남산)",
-    height: "622m",
-    duration: "long",
-    difficulty: "challenging",
-    scenery: ["fortress", "city"],
-    description: "Challenging hike with rewarding views and historical mountain fortress ruins.",
-    highlights: "Ancient mountain fortress, challenging rock climbing sections, historical significance, panoramic views",
-    transport: "Subway Line 3 → Yeonsan Station → Bus 31 → Mountain base (requires hiking experience)",
-    bestSeason: ["spring", "fall"],
-    publicTransport: true,
-    image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/4.JPG"
-  },
-  {
-    name: "Dalmaji Hill (달마지)",
-    height: "180m",
-    duration: "short",
-    difficulty: "easy",
-    scenery: ["ocean", "city"],
-    description: "Scenic coastal walk famous for sunrise and romantic cherry blossom road.",
-    highlights: "Cherry blossom tunnel, sunrise/sunset views, Haeundae skyline, romantic walking paths",
-    transport: "Subway Line 2 → Haeundae Station → 15-min walk along the coast",
-    bestSeason: ["spring", "summer"],
-    publicTransport: true,
-    image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/3.JPG"
-  },
-  {
-    name: "Baegyangsan (백양산)",
-    height: "642m",
-    duration: "medium",
-    difficulty: "moderate",
-    scenery: ["temple", "city"],
-    description: "Urban mountain with multiple peaks and great city overview.",
-    highlights: "Multi-peak hiking, urban forest, city panorama, recreational facilities",
-    transport: "Subway Line 2 → Namposan Station → Local bus to mountain base",
-    bestSeason: ["fall", "spring"],
-    publicTransport: true,
-    image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/1.JPG"
-  },
-  {
-    name: "Cheonjeyeon Falls Trail (천제연)",
-    height: "300m",
-    duration: "short",
-    difficulty: "easy",
-    scenery: ["ocean", "temple"],
-    description: "Beautiful waterfall hike combining nature and coastal views.",
-    highlights: "Multi-tier waterfalls, coastal trails, natural pools, botanical gardens",
-    transport: "Dongbaek Island area: Subway Line 2 → Haeundae → Walk/taxi to trail",
-    bestSeason: ["summer", "fall"],
-    publicTransport: true,
-    image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/2.JPG"
-  }
-];
+        // Top 10 Busan Mountains Data
+        const mountains = [
+            {
+                name: "Geumjeongsan (금정산)",
+                height: "802m",
+                duration: "medium",
+                difficulty: "moderate",
+                scenery: ["temple", "fortress"],
+                description: "Busan's highest peak featuring the historic Geumjeongsan Fortress and beautiful Beomeosa Temple.",
+                highlights: "Ancient fortress walls, Beomeosa Temple (678 AD), panoramic city views, historical significance",
+                transport: "Subway Line 1 → Beomeosa Station (Exit 5) → 20-min walk to trailhead",
+                bestSeason: ["spring", "fall"],
+                publicTransport: true,
+                image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/10.JPG"
+            },
+            {
+                name: "Hwangnyeongsan (황령산)",
+                height: "427m",
+                duration: "short",
+                difficulty: "easy",
+                scenery: ["city", "ocean"],
+                description: "Popular for night views and radio tower, offering 360-degree views of Busan.",
+                highlights: "Busan Tower replica, night illumination, city skyline, easy cable car access",
+                transport: "Subway Line 3 → Namcheon Station → Bus 51 → Hwangnyeongsan Observatory",
+                bestSeason: ["fall", "winter"],
+                publicTransport: true,
+                image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/8.JPG"
+            },
+            {
+                name: "Jangsan (장산)",
+                height: "634m",
+                duration: "medium",
+                difficulty: "moderate",
+                scenery: ["ocean", "city"],
+                description: "Great for sunrise views and overlooking Haeundae Beach area.",
+                highlights: "Sunrise viewpoint, Haeundae Beach panorama, dense forest trails, seasonal wildflowers",
+                transport: "Subway Line 2 → Jangsan Station (Exit 2) → 15-min walk to trail entrance",
+                bestSeason: ["spring", "summer"],
+                publicTransport: true,
+                image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/9.JPG"
+            },
+            {
+                name: "Amisan (아미산)",
+                height: "275m",
+                duration: "short",
+                difficulty: "easy",
+                scenery: ["temple", "city"],
+                description: "Easy urban hike with multiple temples and great for beginners.",
+                highlights: "Multiple Buddhist temples, urban forest, cherry blossoms in spring, easy accessibility",
+                transport: "Subway Line 1 → Choryang Station → 10-min walk to trailhead",
+                bestSeason: ["spring", "fall"],
+                publicTransport: true,
+                image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/7.JPG"
+            },
+            {
+                name: "Molundae (몰운대)",
+                height: "95m",
+                duration: "short",
+                difficulty: "easy",
+                scenery: ["ocean", "fortress"],
+                description: "Coastal cliff walking with stunning ocean views and historical significance.",
+                highlights: "Dramatic sea cliffs, historical Japanese fortress ruins, lighthouse views, coastal photography",
+                transport: "Subway Line 1 → Dadaepo Beach Station → Bus 2 → Molundae entrance",
+                bestSeason: ["fall", "winter"],
+                publicTransport: true,
+                image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/6.JPG"
+            },
+            {
+                name: "Gijangsan (기장산)",
+                height: "559m",
+                duration: "medium",
+                difficulty: "moderate",
+                scenery: ["temple", "ocean"],
+                description: "Peaceful hike with ancient temples and coastal views near Gijang County.",
+                highlights: "Traditional temples, peaceful forest paths, coastal vistas, local cultural sites",
+                transport: "Gijang County: Best accessed by car or tour bus from central Busan",
+                bestSeason: ["spring", "summer"],
+                publicTransport: false,
+                image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/5.JPG"
+            },
+            {
+                name: "Yeongnamsan (영남산)",
+                height: "622m",
+                duration: "long",
+                difficulty: "challenging",
+                scenery: ["fortress", "city"],
+                description: "Challenging hike with rewarding views and historical mountain fortress ruins.",
+                highlights: "Ancient mountain fortress, challenging rock climbing sections, historical significance, panoramic views",
+                transport: "Subway Line 3 → Yeonsan Station → Bus 31 → Mountain base (requires hiking experience)",
+                bestSeason: ["spring", "fall"],
+                publicTransport: true,
+                image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/4.JPG"
+            },
+            {
+                name: "Dalmaji Hill (달마지)",
+                height: "180m",
+                duration: "short",
+                difficulty: "easy",
+                scenery: ["ocean", "city"],
+                description: "Scenic coastal walk famous for sunrise and romantic cherry blossom road.",
+                highlights: "Cherry blossom tunnel, sunrise/sunset views, Haeundae skyline, romantic walking paths",
+                transport: "Subway Line 2 → Haeundae Station → 15-min walk along the coast",
+                bestSeason: ["spring", "summer"],
+                publicTransport: true,
+                image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/3.JPG"
+            },
+            {
+                name: "Baegyangsan (백양산)",
+                height: "642m",
+                duration: "medium",
+                difficulty: "moderate",
+                scenery: ["temple", "city"],
+                description: "Urban mountain with multiple peaks and great city overview.",
+                highlights: "Multi-peak hiking, urban forest, city panorama, recreational facilities",
+                transport: "Subway Line 2 → Namposan Station → Local bus to mountain base",
+                bestSeason: ["fall", "spring"],
+                publicTransport: true,
+                image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/1.JPG"
+            },
+            {
+                name: "Cheonjeyeon Falls Trail (천제연)",
+                height: "300m",
+                duration: "short",
+                difficulty: "easy",
+                scenery: ["ocean", "temple"],
+                description: "Beautiful waterfall hike combining nature and coastal views.",
+                highlights: "Multi-tier waterfalls, coastal trails, natural pools, botanical gardens",
+                transport: "Dongbaek Island area: Subway Line 2 → Haeundae → Walk/taxi to trail",
+                bestSeason: ["summer", "fall"],
+                publicTransport: true,
+                image: "https://raw.githubusercontent.com/Samandar44111/IBM/main/Project/2.JPG"
+            }
+        ];
+
         document.getElementById('hiking-quiz').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -574,27 +606,32 @@
             
             resultsContainer.innerHTML = recommendations.map((trail, index) => `
                 <div class="trail-card">
-                    <div class="trail-name">
-                        ${index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'} ${trail.name}
-                    </div>
-                    
-                    <div class="trail-details">
-                        <div class="detail-item">
-                            <div class="detail-label">Height</div>
-                            <div class="detail-value">${trail.height}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Duration</div>
-                            <div class="detail-value">${trail.duration === 'short' ? '1-2 hours' : 
-                                                         trail.duration === 'medium' ? '2-4 hours' : '4+ hours'}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Difficulty</div>
-                            <div class="detail-value">${trail.difficulty.charAt(0).toUpperCase() + trail.difficulty.slice(1)}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Match Score</div>
-                            <div class="detail-value">${Math.round((trail.score / 13) * 100)}%</div>
+                    <div class="trail-header">
+                        <img src="${trail.image}" alt="${trail.name}" class="trail-image" loading="lazy">
+                        <div class="trail-info">
+                            <div class="trail-name">
+                                ${index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'} ${trail.name}
+                            </div>
+                            
+                            <div class="trail-details">
+                                <div class="detail-item">
+                                    <div class="detail-label">Height</div>
+                                    <div class="detail-value">${trail.height}</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Duration</div>
+                                    <div class="detail-value">${trail.duration === 'short' ? '1-2 hours' : 
+                                                                 trail.duration === 'medium' ? '2-4 hours' : '4+ hours'}</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Difficulty</div>
+                                    <div class="detail-value">${trail.difficulty.charAt(0).toUpperCase() + trail.difficulty.slice(1)}</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Match Score</div>
+                                    <div class="detail-value">${Math.round((trail.score / 13) * 100)}%</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
